@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: myuser
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+  compass:
+    image: mongo/mongocompass
+    container_name: mongocompass
+    restart: always
+    ports:
+      - "27018:27018"
+volumes:
+  mongodb_data:
